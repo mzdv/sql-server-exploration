@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [ddz_sql]    Script Date: 03-May-20 13:33:03 ******/
+/****** Object:  Database [ddz_sql]    Script Date: 03-May-20 14:36:54 ******/
 CREATE DATABASE [ddz_sql]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,13 +80,13 @@ ALTER DATABASE [ddz_sql] SET QUERY_STORE = OFF
 GO
 USE [ddz_sql]
 GO
-/****** Object:  Table [dbo].[Company]    Script Date: 03-May-20 13:33:03 ******/
+/****** Object:  Table [dbo].[Company]    Script Date: 03-May-20 14:36:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Company](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](max) NOT NULL,
  CONSTRAINT [PK_Company] PRIMARY KEY CLUSTERED 
 (
@@ -94,13 +94,13 @@ CREATE TABLE [dbo].[Company](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 03-May-20 13:33:04 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 03-May-20 14:36:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Customer](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](max) NOT NULL,
 	[Address] [nvarchar](max) NOT NULL,
 	[CompanyId] [bigint] NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE [dbo].[Customer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Engine]    Script Date: 03-May-20 13:33:04 ******/
+/****** Object:  Table [dbo].[Engine]    Script Date: 03-May-20 14:36:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,22 +124,17 @@ CREATE TABLE [dbo].[Engine](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EnginesPistons]    Script Date: 03-May-20 13:33:04 ******/
+/****** Object:  Table [dbo].[EnginesPistons]    Script Date: 03-May-20 14:36:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[EnginesPistons](
 	[EngineId] [bigint] NOT NULL,
-	[PistonId] [bigint] NOT NULL,
- CONSTRAINT [PK_EnginesPistons] PRIMARY KEY CLUSTERED 
-(
-	[EngineId] ASC,
-	[PistonId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+	[PistonId] [bigint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Machine]    Script Date: 03-May-20 13:33:04 ******/
+/****** Object:  Table [dbo].[Machine]    Script Date: 03-May-20 14:36:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,28 +148,23 @@ CREATE TABLE [dbo].[Machine](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[MachinesWidgets]    Script Date: 03-May-20 13:33:04 ******/
+/****** Object:  Table [dbo].[MachinesWidgets]    Script Date: 03-May-20 14:36:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[MachinesWidgets](
 	[MachineId] [bigint] NOT NULL,
-	[WidgetsId] [bigint] NOT NULL,
- CONSTRAINT [PK_MachinesWidgets] PRIMARY KEY CLUSTERED 
-(
-	[MachineId] ASC,
-	[WidgetsId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+	[WidgetsId] [bigint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Piston]    Script Date: 03-May-20 13:33:04 ******/
+/****** Object:  Table [dbo].[Piston]    Script Date: 03-May-20 14:36:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Piston](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](max) NOT NULL,
  CONSTRAINT [PK_Piston] PRIMARY KEY CLUSTERED 
 (
@@ -182,13 +172,13 @@ CREATE TABLE [dbo].[Piston](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Product]    Script Date: 03-May-20 13:33:04 ******/
+/****** Object:  Table [dbo].[Product]    Script Date: 03-May-20 14:36:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Product](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](max) NOT NULL,
 	[Description] [nvarchar](max) NOT NULL,
 	[CompanyId] [bigint] NOT NULL,
@@ -198,25 +188,19 @@ CREATE TABLE [dbo].[Product](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Widget]    Script Date: 03-May-20 13:33:04 ******/
+/****** Object:  Table [dbo].[Widget]    Script Date: 03-May-20 14:36:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Widget](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](max) NOT NULL,
  CONSTRAINT [PK_Widget] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Index [IX_EnginesPistons]    Script Date: 03-May-20 13:33:04 ******/
-CREATE NONCLUSTERED INDEX [IX_EnginesPistons] ON [dbo].[EnginesPistons]
-(
-	[EngineId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Company] FOREIGN KEY([CompanyId])
 REFERENCES [dbo].[Company] ([Id])
