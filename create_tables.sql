@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [ddz_sql]    Script Date: 03-May-20 20:30:02 ******/
+/****** Object:  Database [ddz_sql]    Script Date: 03-May-20 20:31:55 ******/
 CREATE DATABASE [ddz_sql]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [ddz_sql] SET QUERY_STORE = OFF
 GO
 USE [ddz_sql]
 GO
-/****** Object:  Table [dbo].[Company]    Script Date: 03-May-20 20:30:03 ******/
+/****** Object:  Table [dbo].[Company]    Script Date: 03-May-20 20:31:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +94,7 @@ CREATE TABLE [dbo].[Company](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 03-May-20 20:30:03 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 03-May-20 20:31:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -110,7 +110,7 @@ CREATE TABLE [dbo].[Customer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Product]    Script Date: 03-May-20 20:30:03 ******/
+/****** Object:  Table [dbo].[Product]    Script Date: 03-May-20 20:31:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -126,7 +126,7 @@ CREATE TABLE [dbo].[Product](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  View [dbo].[CRM]    Script Date: 03-May-20 20:30:03 ******/
+/****** Object:  View [dbo].[CRM]    Script Date: 03-May-20 20:31:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -138,7 +138,21 @@ FROM            dbo.Company INNER JOIN
                          dbo.Customer ON dbo.Company.Id = dbo.Customer.CompanyId INNER JOIN
                          dbo.Product ON dbo.Company.Id = dbo.Product.CompanyId
 GO
-/****** Object:  Table [dbo].[Engine]    Script Date: 03-May-20 20:30:03 ******/
+/****** Object:  Table [dbo].[Widget]    Script Date: 03-May-20 20:31:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Widget](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Widget] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Engine]    Script Date: 03-May-20 20:31:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +166,7 @@ CREATE TABLE [dbo].[Engine](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EnginesPistons]    Script Date: 03-May-20 20:30:03 ******/
+/****** Object:  Table [dbo].[EnginesPistons]    Script Date: 03-May-20 20:31:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +176,7 @@ CREATE TABLE [dbo].[EnginesPistons](
 	[PistonId] [bigint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Machine]    Script Date: 03-May-20 20:30:03 ******/
+/****** Object:  Table [dbo].[Machine]    Script Date: 03-May-20 20:31:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,7 +190,7 @@ CREATE TABLE [dbo].[Machine](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[MachinesWidgets]    Script Date: 03-May-20 20:30:03 ******/
+/****** Object:  Table [dbo].[MachinesWidgets]    Script Date: 03-May-20 20:31:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -186,7 +200,7 @@ CREATE TABLE [dbo].[MachinesWidgets](
 	[WidgetsId] [bigint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Piston]    Script Date: 03-May-20 20:30:03 ******/
+/****** Object:  Table [dbo].[Piston]    Script Date: 03-May-20 20:31:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -195,20 +209,6 @@ CREATE TABLE [dbo].[Piston](
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](max) NOT NULL,
  CONSTRAINT [PK_Piston] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Widget]    Script Date: 03-May-20 20:30:03 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Widget](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](max) NOT NULL,
- CONSTRAINT [PK_Widget] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -257,6 +257,41 @@ ALTER TABLE [dbo].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_Company] FOR
 REFERENCES [dbo].[Company] ([Id])
 GO
 ALTER TABLE [dbo].[Product] CHECK CONSTRAINT [FK_Product_Company]
+GO
+/****** Object:  Trigger [dbo].[DeleteWidgetReferences]    Script Date: 03-May-20 20:31:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Milos Zivadinovic
+-- Create date: 03.05.2020
+-- Description:	When the Widget gets deleted,
+--				remove its reference in the
+--				joined table and decrement
+--				the number on Machine if exists
+-- =============================================
+CREATE   TRIGGER [dbo].[DeleteWidgetReferences]
+ON  [dbo].[Widget] 
+   AFTER DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+	BEGIN TRANSACTION;
+		UPDATE Machine 
+		SET NumberOfWidgets = NumberOfWidgets - 1 
+		FROM
+		Machine m
+		INNER JOIN MachinesWidgets mw 
+		ON m.Id = mw.MachineId
+		WHERE Id = (SELECT deleted.Id FROM deleted);
+	COMMIT;
+END
+GO
+ALTER TABLE [dbo].[Widget] ENABLE TRIGGER [DeleteWidgetReferences]
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
 Begin DesignProperties = 
